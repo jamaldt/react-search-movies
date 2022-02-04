@@ -16,10 +16,14 @@ export class SearchForm extends Component{
         //alert(this.state.inputMovie)
         const {inputMovie} = this.state
 
-        fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&t=${inputMovie}`)
+        fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${inputMovie}`)
             .then(res => res.json())
             .then(results => {
-                console.log(results)
+                
+                const {Search,totalResult} = results
+                //console.log(results)
+                console.log({Search,totalResult})
+                this.props.onResults(Search)
             })
     }
 
