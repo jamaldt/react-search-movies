@@ -1,7 +1,8 @@
 import './App.css';
 import React, { Component } from 'react';
-import {Title} from './components/title'
-import {SearchForm} from './components/SearchForm'
+import {Title} from './components/title';
+import {SearchForm} from './components/SearchForm';
+import 'bulma/css/bulma.min.css'
 
 
 class App extends Component {
