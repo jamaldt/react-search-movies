@@ -24,7 +24,6 @@ class App extends Component {
               year={movie.Year}
               poster={movie.Poster}/>
       )
-      
       //return <p key={movie.imdbID}>{movie.Title}</p>
     })
   }
