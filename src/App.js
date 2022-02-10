@@ -11,7 +11,7 @@ class App extends Component {
   state = {usedSearch:false,results:[]}
 
   _handleResults=(results)=>{
-    this.setState({results})
+    this.setState({results,usedSearch:true})
   }
 
   _renderResult(){
