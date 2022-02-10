@@ -21,9 +21,11 @@ export class SearchForm extends Component{
             .then(results => {
                 
                 const {Search,totalResult} = results
+                const searchResult = Search|| []
+
                 //console.log(results)
                 console.log({Search,totalResult})
-                this.props.onResults(Search)
+                this.props.onResults(searchResult)
             })
     }
 
