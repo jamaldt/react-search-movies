@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   _renderResult(){
-    return this.state.results.length === 0 
+    return typeof this.state.results.length === undefined 
           ? <p>Sorry!! </p>
           : <MoviesList movies={this.state.results}/>
       
