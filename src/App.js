@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import {Title} from './components/title';
 import {MoviesList} from './components/MoviesList';
 import {SearchForm} from './components/SearchForm';
+import { Detail } from './pages/Detail';
 import 'bulma/css/bulma.min.css'
+
 
 
 
@@ -20,7 +22,14 @@ class App extends Component {
           : <MoviesList movies={this.state.results}/>
       
   }
+
   render(){
+    const url = new URL(document.location)
+    const hasId = url.searchParams.has('id')
+
+    if(hasId){
+      return <Detail/>
+    }
     return (
       <div className="App">
         <Title>Search Movies</Title>
