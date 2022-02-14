@@ -1,55 +1,49 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { ButtonBackToHome } from '../components/ButtonBackToHome';
-const API_KEY = '25c9dd1a';
 
-export class Detail extends Component{
-    static propTypes ={
-        match : PropTypes.shape({
-            params : PropTypes.object,
-            isExact : PropTypes.bool,
-            path: PropTypes.string,
-            url: PropTypes.string
-        })
-    }
+import { ButtonBackToHome } from '../components/ButtonBackToHome'
 
-    state = {movie : {}}
-    
-    _fetchMovie({id}){
-        fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`)
-        .then(res => res.json())
-        .then(movie => {
-            console.log(movie)
-            this.setState({movie})
-            //const {Search=[],totalResult="0"} = movie
-            //console.log({Search,totalResult})
-            //this.props.onResults(Search)
-        })   
-    }
+const API_KEY = '25c9dd1a'
 
-    _goBack(){
-        window.history.back()
-    }
+export class Detail extends Component {
+  static propTypes = {
+    match: PropTypes.shape({
+      params: PropTypes.object,
+      isExact: PropTypes.bool,
+      path: PropTypes.string,
+      url: PropTypes.string
+    })
+  }
 
-    componentDidMount(){
-        console.log(this.props)
-        const {id} = this.props.match.params
-        this._fetchMovie({id})
-    }
+  state = { movie: {} }
 
-    render(){
-        const {Title,Poster,Actors,Awards,Metascore,Plot}= this.state.movie
-        return(
-            <div>
-                <ButtonBackToHome/>
-                <h1>{Title}</h1>
-                <img src={Poster} alt='poster'/>
-                <h3>{Actors}</h3>
-                <span>{Metascore}</span>
-                <p>{Plot}</p>
-                <p>{Awards}</p>
-            </div>
-            
-        )
-    }
+  _fetchMovie ({ id }) {
+    fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`)
+      .then(res => res.json())
+      .then(movie => {
+        console.log({ movie })
+        this.setState({ movie })
+      })
+  }
+
+  componentDidMount () {
+    console.log(this.props)
+    const { movieId } = this.props.match.params
+    this._fetchMovie({ id: movieId })
+  }
+
+  render () {
+    const { Title, Poster, Actors, Metascore, Plot } = this.state.movie
+
+    return (
+      <div>
+        <ButtonBackToHome />
+        <h1>{Title}</h1>
+        <img src={Poster} alt='pagina'/>
+        <h3>{Actors}</h3>
+        <span>{Metascore}</span>
+        <p>{Plot}</p>
+      </div>
+    )
+  }
 }
